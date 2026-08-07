@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { Produto as ProdutoType } from '../../App'
 import * as S from './styles'
 
@@ -16,7 +16,20 @@ export const paraReal = (valor: number) =>
   )
 
 const ProdutoComponent = ({ produto, favoritar, estaNosFavoritos }: Props) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const itens = useAppSelector((state) => state.carrinho.itens)
+
+  const AdicionarAoCarrinho = () => {
+    const produtoJaExiste = itens.some((item) => item.id === produto.id)
+
+    if (produtoJaExiste) {
+      alert('Item já adicionado ao carrinho')
+      return
+    }
+
+    dispatch(adicionar(produto))
+  }
+
   return (
     <S.Produto>
       <S.Capa>
@@ -31,7 +44,7 @@ const ProdutoComponent = ({ produto, favoritar, estaNosFavoritos }: Props) => {
           ? '- Remover dos favoritos'
           : '+ Adicionar aos favoritos'}
       </S.BtnComprar>
-      <S.BtnComprar onClick={() => dispatch(adicionar(produto))} type="button">
+      <S.BtnComprar onClick={AdicionarAoCarrinho} type="button">
         Adicionar ao carrinho
       </S.BtnComprar>
     </S.Produto>

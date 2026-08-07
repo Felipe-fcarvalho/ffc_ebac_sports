@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Provider } from 'react-redux'
 import Header from './components/Header'
 import Produtos from './containers/Produtos'
@@ -15,14 +15,7 @@ export type Produto = {
 }
 
 function App() {
-  const [produtos, setProdutos] = useState<Produto[]>([])
   const [favoritos, setFavoritos] = useState<Produto[]>([])
-
-  useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/ebac_sports')
-      .then((res) => res.json())
-      .then((res) => setProdutos(res))
-  }, [])
 
   function favoritar(produto: Produto) {
     if (favoritos.find((p) => p.id === produto.id)) {
@@ -38,11 +31,7 @@ function App() {
       <GlobalStyle />
       <div className="container">
         <Header favoritos={favoritos} />
-        <Produtos
-          produtos={produtos}
-          favoritos={favoritos}
-          favoritar={favoritar}
-        />
+        <Produtos favoritos={favoritos} favoritar={favoritar} />
       </div>
     </Provider>
   )
