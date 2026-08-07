@@ -1,6 +1,6 @@
 # EBAC FullSTACK Designer
 
-## Exercício prático do módulo 29 sobre Redux
+## Exercício prático do módulo 30 sobre Redux
 
 ###
 
