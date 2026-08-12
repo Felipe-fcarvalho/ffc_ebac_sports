@@ -11,4 +11,4 @@
 - utilizar o useSelector;
 - utilizar o useDispatch.
 
-3) Eviar o link do repositório com as alterações realizadas.
+3) Enviar o link do repositório com as alterações realizadas.
