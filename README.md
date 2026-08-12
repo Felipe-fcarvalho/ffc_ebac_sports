@@ -1,8 +1,6 @@
-# EBAC FullSTACK Designer
+# EBAC FullStack Designer
 
 ## Exercício prático do módulo 30 sobre Redux
-
-###
 
 1) Criar um fork no Github para o projeto que foi disponibilizado
 2) Alterar o gerenciamento de estado do projeto que está sendo o "useState" para um gerenciamento com Redux.
